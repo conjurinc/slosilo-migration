@@ -1,6 +1,7 @@
 # Slosilo::Migration::Helper
 
-TODO: Write a gem description
+Provides legacy `aes-256-cbc` encryption for purposes of migrating from
+[Slosilo](https://github.com/conjurinc/slosilo) 1.x to 2.x.
 
 ## Installation
 
