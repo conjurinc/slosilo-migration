@@ -3,7 +3,12 @@ module Slosilo::Migration
     def initialize
       @cipher = OpenSSL::Cipher.new 'AES-256-CBC'
     end
-    
+
+    # This lets us do a final sanity check in migrations from older encryption versions
+    def cipher_name
+      @cipher.name
+    end
+
     def encrypt plaintext, opts = {}
       @cipher.reset
       @cipher.encrypt
