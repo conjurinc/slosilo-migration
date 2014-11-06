@@ -13,3 +13,4 @@ module Slosilo
 end
 
 require 'slosilo/migration/symmetric'
+require 'slosilo/migration/migrate_keys'
