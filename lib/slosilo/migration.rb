@@ -14,3 +14,4 @@ end
 
 require 'slosilo/migration/symmetric'
 require 'slosilo/migration/migrate_keys'
+require 'slosilo/migration/attr_encrypted'
