@@ -30,10 +30,14 @@ module Slosilo
         progress = progress_bar keystore.count
 
         keystore.each  do |row|
-          ptext = old_cipher.decrypt row[:key], key: key
-          ctext = new_cipher.encrypt ptext, key: key, aad: row[:id]
-          keystore.where(id: row[:id]).update(key: Sequel.blob(ctext))
-          progress.increment
+          begin
+            ptext = old_cipher.decrypt row[:key], key: key
+            ctext = new_cipher.encrypt ptext, key: key, aad: row[:id]
+            keystore.where(id: row[:id]).update(key: Sequel.blob(ctext))
+            progress.increment
+          rescue OpenSSL::Cipher::CipherError
+            warn "CipherError"
+          end
         end
       end
 
@@ -63,7 +67,7 @@ end
 #   end
 #
 #   down do
-#     raise "Irreversable!"
+#     raise "Irreversible!"
 #   end
 # end
 #
