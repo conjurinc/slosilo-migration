@@ -25,6 +25,3 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "slosilo"
   spec.add_development_dependency 'rspec_junit_formatter'
 end
-
-  
-end
