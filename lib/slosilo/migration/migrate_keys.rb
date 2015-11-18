@@ -34,7 +34,7 @@ module Slosilo
             # try to decrypt using new cipher
             new_cipher.decrypt row[:key], key: key, aad: row[:id]
             # it worked, no need to update
-          rescue OpenSSL::Cipher::CipherError
+          rescue
             # otherwise, needs to be upgraded.
             ptext = old_cipher.decrypt row[:key], key: key
             ctext = new_cipher.encrypt ptext, key: key, aad: row[:id]
